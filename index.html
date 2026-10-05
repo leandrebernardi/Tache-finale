@@ -82,10 +82,13 @@
             letter-spacing: -0.5px;
         }
 
-        .project-title i {
-            color: #ff3b30;
-            font-size: 20px;
-            animation: pulse 2s infinite ease-in-out;
+        /* Style spécifique pour votre Logo Corse.png */
+        .page-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
+            border-radius: 50%;
         }
 
         .theme-toggle {
@@ -204,12 +207,6 @@
             }
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 0.9; }
-            50% { transform: scale(1.1); opacity: 1; }
-            100% { transform: scale(1); opacity: 0.9; }
-        }
-
         @media (max-width: 480px) {
             .streaming-links { flex-direction: column; }
             .badge-btn { width: 100%; }
@@ -220,10 +217,10 @@
 
     <div class="player-container">
         
-        <!-- En-tête -->
+        <!-- En-tête avec votre logo Corse.png -->
         <div class="header-bar">
             <div class="project-title">
-                <i class="fa-solid fa-music"></i> 
+                <img src="Corse.png" alt="Logo Corse" class="page-logo">
                 <span>Tache Finale | Léandre Bernardi | 5D</span>
             </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
@@ -232,7 +229,7 @@
             </button>
         </div>
 
-        <!-- Lecteur audio lié à votre fichier local racine -->
+        <!-- Lecteur audio autonome racine -->
         <div class="audio-wrapper">
             <div class="audio-info">Léandre Bernardi — Alla Fiera dell'Est (live, 1977)</div>
             <audio controls>
@@ -241,7 +238,7 @@
             </audio>
         </div>
 
-        <!-- Badges avec vos adresses exactes -->
+        <!-- Badges de streaming -->
         <div class="streaming-links">
             <div class="streaming-title">Écouter la version originale :</div>
             
@@ -304,3 +301,5 @@
         }
     </script>
 
+</body>
+</html>
