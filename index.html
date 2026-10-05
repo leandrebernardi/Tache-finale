@@ -4,12 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tache Finale | Léandre Bernardi | 5D</title>
-    
-    <!-- Déclaration du favicon officiel -->
     <link rel="icon" type="image/png" href="Corse.png">
-    
     <style>
-        /* Définition des variables - Mode Clair */
         :root {
             --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             --card-bg: rgba(255, 255, 255, 0.75);
@@ -20,10 +16,10 @@
             --wrapper-border: rgba(255, 255, 255, 0.8);
             --toggle-bg: #e4e8f0;
             --toggle-color: #1d1d1f;
-            --badge-filter: none;
+            --badge-bg: #ffffff;
+            --badge-border: rgba(0, 0, 0, 0.08);
+            --badge-text: #1d1d1f;
         }
-
-        /* Définition des variables - Mode Sombre */
         [data-theme="dark"] {
             --bg-gradient: linear-gradient(135deg, #121214 0%, #1a1a22 100%);
             --card-bg: rgba(28, 28, 30, 0.7);
@@ -34,12 +30,12 @@
             --wrapper-border: rgba(0, 0, 0, 0.2);
             --toggle-bg: #2c2c2e;
             --toggle-color: #f5f5f7;
-            /* Ajoute une légère bordure lumineuse aux badges sombres sur fond sombre */
-            --badge-filter: drop-shadow(0 0 1px rgba(255,255,255,0.2));
+            --badge-bg: #2c2c2e;
+            --badge-border: rgba(255, 255, 255, 0.08);
+            --badge-text: #f5f5f7;
         }
-
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             background: var(--bg-gradient);
             display: flex;
             justify-content: center;
@@ -50,8 +46,6 @@
             box-sizing: border-box;
             transition: background 0.4s ease;
         }
-
-        /* Conteneur principal */
         .player-container {
             width: 100%;
             max-width: 540px;
@@ -62,12 +56,10 @@
             border-radius: 24px;
             border: 1px solid var(--card-border);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            position: relative;
             opacity: 0;
             transform: translateY(15px);
             animation: fadeIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
-
         .header-bar {
             display: flex;
             justify-content: space-between;
@@ -76,7 +68,6 @@
             border-bottom: 1px solid rgba(134, 134, 139, 0.15);
             padding-bottom: 15px;
         }
-
         .project-title {
             display: flex;
             align-items: center;
@@ -84,17 +75,13 @@
             font-size: 20px;
             font-weight: 600;
             color: var(--text-main);
-            letter-spacing: -0.5px;
         }
-
         .page-logo {
             width: 32px;
             height: 32px;
             object-fit: contain;
-            filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.15));
             border-radius: 50%;
         }
-
         .theme-toggle {
             background: var(--toggle-bg);
             color: var(--toggle-color);
@@ -106,14 +93,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
-            transition: all 0.3s ease;
             font-weight: 500;
         }
-
-        .theme-toggle:hover {
-            transform: scale(1.05);
-        }
-
         .audio-wrapper {
             background: var(--wrapper-bg);
             border: 1px solid var(--wrapper-border);
@@ -121,21 +102,16 @@
             border-radius: 16px;
             margin-bottom: 15px;
         }
-
         .audio-info {
             font-size: 14px;
             color: var(--text-sub);
             font-weight: 500;
             margin-bottom: 12px;
         }
-
         audio {
             width: 100%;
             height: 40px;
-            outline: none;
         }
-
-        /* Grille des badges officiels de streaming */
         .streaming-links {
             margin-top: 30px;
             padding-top: 20px;
@@ -145,7 +121,6 @@
             gap: 12px;
             flex-wrap: wrap;
         }
-
         .streaming-title {
             font-size: 12px;
             color: var(--text-sub);
@@ -153,46 +128,51 @@
             width: 100%;
             margin-bottom: 12px;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
         }
-
-        /* Style des images-logos "Listen on" */
         .platform-badge {
+            display: inline-flex;
+            align-items: center;
+            background-color: var(--badge-bg);
+            border: 1px solid var(--badge-border);
+            border-radius: 14px;
+            padding: 8px 14px;
             flex: 1;
-            min-width: 140px;
-            height: 45px;
-            display: flex;
-            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s ease;
-            filter: var(--badge-filter);
+            min-width: 145px;
+            text-decoration: none !important;
+            color: var(--badge-text);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            transition: transform 0.25s, box-shadow 0.25s;
         }
-
-        .platform-badge img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 7px;
-        }
-
         .platform-badge:hover {
             transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
-
+        .platform-badge img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            margin-right: 12px;
+        }
+        .badge-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+        .badge-text .small-txt {
+            font-size: 8px;
+            color: var(--text-sub);
+            text-transform: uppercase;
+        }
+        .badge-text .brand-txt {
+            font-size: 13px;
+            font-weight: 600;
+        }
         @keyframes fadeIn {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        @media (max-width: 580px) {
-            .streaming-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            .platform-badge {
-                width: 100%;
-                max-width: 200px;
-            }
+        @media (max-width: 480px) {
+            .streaming-links { flex-direction: column; }
+            .platform-badge { width: 100%; }
         }
     </style>
 </head>
@@ -200,49 +180,54 @@
 
     <div class="player-container">
         
-        <!-- En-tête -->
         <div class="header-bar">
             <div class="project-title">
                 <img src="Corse.png" alt="Logo Corse" class="page-logo">
                 <span>Tache Finale | Léandre Bernardi | 5D</span>
             </div>
-            <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
+            <button class="theme-toggle" id="themeToggle">
                 <span id="toggleIcon">🌙</span>
                 <span id="toggleText">Sombre</span>
             </button>
         </div>
 
-        <!-- Lecteur audio lié à votre fichier local racine -->
         <div class="audio-wrapper">
             <div class="audio-info">Léandre Bernardi — Alla Fiera dell'Est (live, 1977)</div>
             <audio controls>
                 <source src="alla-fiera.mp3" type="audio/mpeg">
-                Votre navigateur ne prend pas en charge l'écoute de ce morceau.
+                Votre navigateur ne prend pas en charge l'écoute.
             </audio>
         </div>
 
-        <!-- Liens avec logos graphiques officiels -->
         <div class="streaming-links">
             <div class="streaming-title">Écouter la version originale :</div>
             
-            <!-- Badge Spotify -->
-            <a href="https://spotify.com" class="platform-badge" target="_blank" title="Écouter sur Spotify">
-                <img src="https://googleapis.com" alt="Listen on Spotify" style="background-color: #000; padding: 4px 12px; box-sizing: border-box;">
+            <a href="https://spotify.com" class="platform-badge" target="_blank">
+                <img src="https://googleapis.com" alt="Spotify">
+                <div class="badge-text">
+                    <span class="small-txt">Écouter sur</span>
+                    <span class="brand-txt">Spotify</span>
+                </div>
             </a>
 
-            <!-- Badge Apple Music -->
-            <a href="https://apple.com" class="platform-badge" target="_blank" title="Écouter sur Apple Music">
-                <img src="https://applemediaservices.com" alt="Listen on Apple Music">
+            <a href="https://apple.com" class="platform-badge" target="_blank">
+                <img src="https://apple.com" alt="Apple Music">
+                <div class="badge-text">
+                    <span class="small-txt">Écouter sur</span>
+                    <span class="brand-txt">Apple Music</span>
+                </div>
             </a>
 
-            <!-- Badge Deezer -->
-            <a href="https://deezer.com" class="platform-badge" target="_blank" title="Écouter sur Deezer">
-                <img src="https://deezer.com" alt="Listen on Deezer" style="background-color: #fff; border: 1px solid #ddd; box-sizing: border-box; padding: 4px;">
+            <a href="https://deezer.com" class="platform-badge" target="_blank">
+                <img src="https://vecteezy.com" alt="Deezer">
+                <div class="badge-text">
+                    <span class="small-txt">Écouter sur</span>
+                    <span class="brand-txt">Deezer</span>
+                </div>
             </a>
         </div>
     </div>
 
-    <!-- Script de gestion du mode choisi -->
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
         const toggleIcon = document.getElementById('toggleIcon');
@@ -255,7 +240,6 @@
         themeToggleBtn.addEventListener('click', () => {
             const currentTheme = document.documentElement.getAttribute('data-theme');
             const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
             document.documentElement.setAttribute('data-theme', newTheme);
             localStorage.setItem('theme', newTheme);
             updateToggleInterface(newTheme);
@@ -274,3 +258,4 @@
 
 </body>
 </html>
+
