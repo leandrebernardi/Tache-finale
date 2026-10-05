@@ -4,141 +4,201 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tache Finale | Léandre Bernardi | 5D</title>
-    <!-- Chargement de la bibliothèque d'icônes -->
+    <!-- Chargement des icônes FontAwesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
+        :root {
+            --primary-color: #ff3b30; /* Rouge Apple principal */
+            --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            --card-bg: rgba(255, 255, 255, 0.75);
+            --card-border: rgba(255, 255, 255, 0.6);
+            --text-main: #1d1d1f;
+            --text-sub: #86868b;
+        }
+
         body {
-            font-family: 'Interstate', 'Lucida Grande', Arial, sans-serif;
-            background-color: #fcfcfc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
         }
+
+        /* Conteneur style verre dépoli (Glassmorphism) */
         .player-container {
             width: 100%;
-            max-width: 700px;
-            padding: 25px;
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            max-width: 540px;
+            padding: 35px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: 24px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.06);
+            transition: transform 0.3s ease;
         }
+
+        /* Titre du projet épuré */
         .project-title {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #222;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f4f4f4;
-            padding-bottom: 12px;
-        }
-        .project-title i {
-            color: #ac9484;
-            font-size: 22px;
-        }
-        
-        /* Style du nouveau lecteur audio natif */
-        .audio-wrapper {
-            background: #f1f3f4;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 10px;
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
-        .audio-info {
-            font-size: 14px;
-            color: #333;
-            font-weight: 500;
-        }
-        audio {
-            width: 100%;
-            outline: none;
+            gap: 12px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 25px;
+            letter-spacing: -0.5px;
         }
 
+        .project-title i {
+            color: var(--primary-color);
+            font-size: 20px;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        /* Nouveau look pour la zone du lecteur audio */
+        .audio-wrapper {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 16px;
+            margin-bottom: 15px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.01);
+        }
+
+        .audio-info {
+            font-size: 14px;
+            color: var(--text-sub);
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: -0.1px;
+        }
+
+        audio {
+            width: 100%;
+            height: 40px;
+            outline: none;
+            border-radius: 8px;
+        }
+
+        /* Zone des badges officiels */
         .streaming-links {
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
             display: flex;
-            gap: 12px;
-            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
             flex-wrap: wrap;
         }
+
         .streaming-title {
             font-size: 12px;
-            color: #666;
-            font-weight: bold;
+            color: var(--text-sub);
+            font-weight: 600;
             width: 100%;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
         }
+
+        /* Style boutons "Listen on" mis à niveau */
         .badge-btn {
             display: inline-flex;
             align-items: center;
-            background-color: #000000;
+            background-color: #1d1d1f;
             color: #ffffff;
             text-decoration: none;
-            border-radius: 7px;
-            padding: 6px 14px;
-            min-width: 140px;
-            border: 1px solid #222;
-            transition: transform 0.2s, background-color 0.2s;
+            border-radius: 10px;
+            padding: 8px 14px;
+            flex: 1;
+            min-width: 135px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
         }
+
         .badge-btn:hover {
-            transform: scale(1.02);
-            background-color: #111;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            background-color: #000000;
         }
+
         .badge-btn i {
-            font-size: 22px;
+            font-size: 24px;
             margin-right: 10px;
+            transition: color 0.2s;
         }
+
         .badge-text {
             display: flex;
             flex-direction: column;
-            line-height: 1.2;
+            line-height: 1.15;
         }
+
         .badge-text .small-txt {
-            font-size: 9px;
+            font-size: 8px;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #dfdfdf;
+            letter-spacing: 0.6px;
+            color: #aeaeb2;
         }
+
         .badge-text .brand-txt {
-            font-size: 15px;
-            font-weight: bold;
-            font-family: Arial, sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
         }
+
+        /* Couleurs dynamiques au survol */
         .spotify:hover i { color: #1ed760; }
         .apple:hover i { color: #fc3c44; }
-        .deezer:hover i { color: #a238ff; }
+        .deezer:hover i { color: #ffd300; }
+
+        /* Petite animation discrète sur la note de musique */
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.9; }
+            50% { transform: scale(1.1); opacity: 1; }
+            100% { transform: scale(1); opacity: 0.9; }
+        }
+
+        /* Optimisation pour les écrans mobiles */
+        @media (max-width: 480px) {
+            .streaming-links {
+                flex-direction: column;
+            }
+            .badge-btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
 
     <div class="player-container">
-        <!-- Titre de la page avec icône -->
+        <!-- En-tête avec l'icône animée -->
         <div class="project-title">
             <i class="fa-solid fa-music"></i> 
             <span>Tache Finale | Léandre Bernardi | 5D</span>
         </div>
 
-        <!-- LECTEUR AUDIO SÉCURISÉ LISANT DIRECTEMENT VOTRE MP3 -->
+        <!-- Lecteur épuré connecté au fichier local -->
         <div class="audio-wrapper">
-            <div class="audio-info">Léandre Bernardi - Alla Fiera dell'Est (live, 1977)</div>
+            <div class="audio-info">Léandre Bernardi — Alla Fiera dell'Est (live, 1977)</div>
             <audio controls>
                 <source src="alla-fiera.mp3" type="audio/mpeg">
-                Votre navigateur ne prend pas en charge l'écoute de ce fichier audio.
+                Votre navigateur ne prend pas en charge l'écoute de ce morceau.
             </audio>
         </div>
 
-        <!-- Liens vers les plateformes officielles -->
+        <!-- Badges de redirection officiels -->
         <div class="streaming-links">
-            <div class="streaming-title">Écouter la version originale :</div>
+            <div class="streaming-title">Écouter l'album original :</div>
             
+            <!-- Spotify -->
             <a href="https://spotify.com" class="badge-btn spotify" target="_blank">
                 <i class="fa-brands fa-spotify"></i>
                 <div class="badge-text">
@@ -147,6 +207,7 @@
                 </div>
             </a>
 
+            <!-- Apple Music -->
             <a href="https://apple.com" class="badge-btn apple" target="_blank">
                 <i class="fa-brands fa-apple"></i>
                 <div class="badge-text">
@@ -155,6 +216,7 @@
                 </div>
             </a>
 
+            <!-- Deezer -->
             <a href="https://deezer.com" class="badge-btn deezer" target="_blank">
                 <i class="fa-brands fa-deezer"></i>
                 <div class="badge-text">
