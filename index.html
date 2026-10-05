@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tache Finale | Léandre Bernardi | 5D</title>
     
-    <!-- AJOUT DU FAVICON ICI -->
+    <!-- Déclaration du favicon officiel -->
     <link rel="icon" type="image/png" href="Corse.png">
     
-    <!-- Chargement des icônes FontAwesome -->
+    <!-- Chargement de la bibliothèque d'icônes -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Variables pour le Mode Clair */
+        /* Définition des variables - Mode Clair */
         :root {
             --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
             --card-bg: rgba(255, 255, 255, 0.75);
@@ -24,7 +24,7 @@
             --toggle-color: #1d1d1f;
         }
 
-        /* Variables pour le Mode Sombre */
+        /* Définition des variables - Mode Sombre */
         [data-theme="dark"] {
             --bg-gradient: linear-gradient(135deg, #121214 0%, #1a1a22 100%);
             --card-bg: rgba(28, 28, 30, 0.7);
@@ -50,7 +50,7 @@
             transition: background 0.4s ease;
         }
 
-        /* Animation Fade-in au chargement */
+        /* Conteneur principal avec animation d'entrée */
         .player-container {
             width: 100%;
             max-width: 540px;
@@ -220,7 +220,7 @@
 
     <div class="player-container">
         
-        <!-- En-tête -->
+        <!-- En-tête de la carte -->
         <div class="header-bar">
             <div class="project-title">
                 <img src="Corse.png" alt="Logo Corse" class="page-logo">
@@ -232,7 +232,7 @@
             </button>
         </div>
 
-        <!-- Lecteur audio autonome -->
+        <!-- Lecteur audio autonome lié à votre MP3 -->
         <div class="audio-wrapper">
             <div class="audio-info">Léandre Bernardi — Alla Fiera dell'Est (live, 1977)</div>
             <audio controls>
@@ -241,12 +241,12 @@
             </audio>
         </div>
 
-        <!-- Badges de streaming -->
+        <!-- Liens vers les plateformes de streaming d'Angelo Branduardi -->
         <div class="streaming-links">
             <div class="streaming-title">Écouter la version originale :</div>
             
-            <!-- Spotify -->
-            <a href="https://spotify.com" class="badge-btn spotify" target="_blank">
+            <!-- Badge Spotify -->
+            <a href="https://open.spotify.com/intl-fr/track/6H05BWojJmygTQQHpt9irD" class="badge-btn spotify" target="_blank">
                 <i class="fa-brands fa-spotify"></i>
                 <div class="badge-text">
                     <span class="small-txt">Listen on</span>
@@ -254,8 +254,8 @@
                 </div>
             </a>
 
-            <!-- Apple Music -->
-            <a href="https://apple.com" class="badge-btn apple" target="_blank">
+            <!-- Badge Apple Music -->
+            <a href="https://music.apple.com/us/song/alla-fiera-dellest/1443480954" class="badge-btn apple" target="_blank">
                 <i class="fa-brands fa-apple"></i>
                 <div class="badge-text">
                     <span class="small-txt">Listen on</span>
@@ -263,8 +263,8 @@
                 </div>
             </a>
 
-            <!-- Deezer -->
-            <a href="https://deezer.com" class="badge-btn deezer" target="_blank">
+            <!-- Badge Deezer -->
+            <a href="https://www.deezer.com/fr/album/99684" class="badge-btn deezer" target="_blank">
                 <i class="fa-brands fa-deezer"></i>
                 <div class="badge-text">
                     <span class="small-txt">Listen on</span>
@@ -274,7 +274,7 @@
         </div>
     </div>
 
-    <!-- Script JavaScript -->
+    <!-- Script de gestion de la mémoire du mode choisi -->
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
         const toggleIcon = themeToggleBtn.querySelector('i');
@@ -299,10 +299,3 @@
                 toggleText.innerText = 'Clair';
             } else {
                 toggleIcon.className = 'fa-solid fa-moon';
-                toggleText.innerText = 'Sombre';
-            }
-        }
-    </script>
-
-</body>
-</html>
