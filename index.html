@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lecteur SoundCloud - Léandre Bernardi</title>
-    <!-- Chargement de la bibliothèque d'icônes officielles -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         body {
@@ -37,8 +36,6 @@
         .credits a:hover {
             color: #333;
         }
-        
-        /* Section des badges de streaming */
         .streaming-links {
             margin-top: 25px;
             padding-top: 15px;
@@ -55,8 +52,6 @@
             width: 100%;
             margin-bottom: 8px;
         }
-        
-        /* Style général des Badges officiels "Listen on" */
         .badge-btn {
             display: inline-flex;
             align-items: center;
@@ -93,17 +88,15 @@
             font-weight: bold;
             font-family: Arial, sans-serif;
         }
-
-        /* Personnalisation subtile des couleurs de logos au survol (optionnel) */
         .spotify:hover i { color: #1ed760; }
         .apple:hover i { color: #fc3c44; }
-        .deezer:hover i { color: #a238ff; } /* Couleur violette de la marque Deezer */
+        .deezer:hover i { color: #a238ff; }
     </style>
 </head>
 <body>
 
     <div class="player-container">
-        <!-- Début du lecteur SoundCloud -->
+        <!-- CODE IFRAME CORRIGÉ ET NETTOYÉ ICI -->
         <iframe width="100%" 
                 height="166" 
                 scrolling="no" 
@@ -112,19 +105,15 @@
                 src="https://soundcloud.com">
         </iframe>
         
-        <!-- Crédits sous le lecteur -->
         <div class="credits">
             <a href="https://soundcloud.com" title="Léandre Bernardi" target="_blank">Léandre Bernardi</a> 
             · 
             <a href="https://soundcloud.com/alla-fiera-dellest-live-1977" title="Alla Fiera dell'Est (live, 1977)" target="_blank">Alla Fiera dell'Est (live, 1977)</a>
         </div>
-        <!-- Fin du lecteur SoundCloud -->
 
-        <!-- Section des Badges Officiels de Streaming -->
         <div class="streaming-links">
             <div class="streaming-title">Écouter la version originale :</div>
             
-            <!-- Badge Spotify -->
             <a href="https://spotify.com" class="badge-btn spotify" target="_blank">
                 <i class="fa-brands fa-spotify"></i>
                 <div class="badge-text">
@@ -133,7 +122,6 @@
                 </div>
             </a>
 
-            <!-- Badge Apple Music -->
             <a href="https://apple.com" class="badge-btn apple" target="_blank">
                 <i class="fa-brands fa-apple"></i>
                 <div class="badge-text">
@@ -142,7 +130,6 @@
                 </div>
             </a>
 
-            <!-- Badge Deezer -->
             <a href="https://deezer.com" class="badge-btn deezer" target="_blank">
                 <i class="fa-brands fa-deezer"></i>
                 <div class="badge-text">
