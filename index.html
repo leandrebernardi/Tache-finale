@@ -8,8 +8,6 @@
     <!-- Déclaration du favicon officiel -->
     <link rel="icon" type="image/png" href="Corse.png">
     
-    <!-- Chargement de la bibliothèque d'icônes -->
-    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
         /* Définition des variables - Mode Clair */
         :root {
@@ -22,6 +20,7 @@
             --wrapper-border: rgba(255, 255, 255, 0.8);
             --toggle-bg: #e4e8f0;
             --toggle-color: #1d1d1f;
+            --badge-filter: none;
         }
 
         /* Définition des variables - Mode Sombre */
@@ -35,6 +34,8 @@
             --wrapper-border: rgba(0, 0, 0, 0.2);
             --toggle-bg: #2c2c2e;
             --toggle-color: #f5f5f7;
+            /* Ajoute une légère bordure lumineuse aux badges sombres sur fond sombre */
+            --badge-filter: drop-shadow(0 0 1px rgba(255,255,255,0.2));
         }
 
         body {
@@ -50,7 +51,7 @@
             transition: background 0.4s ease;
         }
 
-        /* Conteneur principal avec animation d'entrée */
+        /* Conteneur principal */
         .player-container {
             width: 100%;
             max-width: 540px;
@@ -134,13 +135,14 @@
             outline: none;
         }
 
+        /* Grille des badges officiels de streaming */
         .streaming-links {
             margin-top: 30px;
             padding-top: 20px;
             border-top: 1px solid rgba(134, 134, 139, 0.1);
             display: flex;
             justify-content: space-between;
-            gap: 10px;
+            gap: 12px;
             flex-wrap: wrap;
         }
 
@@ -154,54 +156,26 @@
             letter-spacing: 0.8px;
         }
 
-        .badge-btn {
-            display: inline-flex;
-            align-items: center;
-            background-color: #1d1d1f;
-            color: #ffffff;
-            text-decoration: none;
-            border-radius: 10px;
-            padding: 8px 14px;
+        /* Style des images-logos "Listen on" */
+        .platform-badge {
             flex: 1;
-            min-width: 135px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-        }
-
-        .badge-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            background-color: #000000;
-        }
-
-        .badge-btn i {
-            font-size: 24px;
-            margin-right: 10px;
-            transition: color 0.2s;
-        }
-
-        .badge-text {
+            min-width: 140px;
+            height: 45px;
             display: flex;
-            flex-direction: column;
-            line-height: 1.15;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.25s ease;
+            filter: var(--badge-filter);
         }
 
-        .badge-text .small-txt {
-            font-size: 8px;
-            text-transform: uppercase;
-            letter-spacing: 0.6px;
-            color: #aeaeb2;
+        .platform-badge img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 7px;
         }
 
-        .badge-text .brand-txt {
-            font-size: 14px;
-            font-weight: 600;
+        .platform-badge:hover {
+            transform: translateY(-4px);
         }
-
-        .spotify:hover i { color: #1ed760; }
-        .apple:hover i { color: #fc3c44; }
-        .deezer:hover i { color: #ffd300; }
 
         @keyframes fadeIn {
             to {
@@ -210,9 +184,15 @@
             }
         }
 
-        @media (max-width: 480px) {
-            .streaming-links { flex-direction: column; }
-            .badge-btn { width: 100%; }
+        @media (max-width: 580px) {
+            .streaming-links {
+                flex-direction: column;
+                align-items: center;
+            }
+            .platform-badge {
+                width: 100%;
+                max-width: 200px;
+            }
         }
     </style>
 </head>
@@ -220,19 +200,19 @@
 
     <div class="player-container">
         
-        <!-- En-tête de la carte -->
+        <!-- En-tête -->
         <div class="header-bar">
             <div class="project-title">
                 <img src="Corse.png" alt="Logo Corse" class="page-logo">
                 <span>Tache Finale | Léandre Bernardi | 5D</span>
             </div>
             <button class="theme-toggle" id="themeToggle" aria-label="Changer de thème">
-                <i class="fa-solid fa-moon"></i>
+                <span id="toggleIcon">🌙</span>
                 <span id="toggleText">Sombre</span>
             </button>
         </div>
 
-        <!-- Lecteur audio autonome lié à votre MP3 -->
+        <!-- Lecteur audio lié à votre fichier local racine -->
         <div class="audio-wrapper">
             <div class="audio-info">Léandre Bernardi — Alla Fiera dell'Est (live, 1977)</div>
             <audio controls>
@@ -241,43 +221,31 @@
             </audio>
         </div>
 
-        <!-- Liens vers les plateformes de streaming d'Angelo Branduardi -->
+        <!-- Liens avec logos graphiques officiels -->
         <div class="streaming-links">
             <div class="streaming-title">Écouter la version originale :</div>
             
             <!-- Badge Spotify -->
-            <a href="https://open.spotify.com/intl-fr/track/6H05BWojJmygTQQHpt9irD" class="badge-btn spotify" target="_blank">
-                <i class="fa-brands fa-spotify"></i>
-                <div class="badge-text">
-                    <span class="small-txt">Listen on</span>
-                    <span class="brand-txt">Spotify</span>
-                </div>
+            <a href="https://spotify.com" class="platform-badge" target="_blank" title="Écouter sur Spotify">
+                <img src="https://googleapis.com" alt="Listen on Spotify" style="background-color: #000; padding: 4px 12px; box-sizing: border-box;">
             </a>
 
             <!-- Badge Apple Music -->
-            <a href="https://music.apple.com/us/song/alla-fiera-dellest/1443480954" class="badge-btn apple" target="_blank">
-                <i class="fa-brands fa-apple"></i>
-                <div class="badge-text">
-                    <span class="small-txt">Listen on</span>
-                    <span class="brand-txt">Music</span>
-                </div>
+            <a href="https://apple.com" class="platform-badge" target="_blank" title="Écouter sur Apple Music">
+                <img src="https://applemediaservices.com" alt="Listen on Apple Music">
             </a>
 
             <!-- Badge Deezer -->
-            <a href="https://www.deezer.com/fr/album/99684" class="badge-btn deezer" target="_blank">
-                <i class="fa-brands fa-deezer"></i>
-                <div class="badge-text">
-                    <span class="small-txt">Listen on</span>
-                    <span class="brand-txt">Deezer</span>
-                </div>
+            <a href="https://deezer.com" class="platform-badge" target="_blank" title="Écouter sur Deezer">
+                <img src="https://deezer.com" alt="Listen on Deezer" style="background-color: #fff; border: 1px solid #ddd; box-sizing: border-box; padding: 4px;">
             </a>
         </div>
     </div>
 
-    <!-- Script de gestion de la mémoire du mode choisi -->
+    <!-- Script de gestion du mode choisi -->
     <script>
         const themeToggleBtn = document.getElementById('themeToggle');
-        const toggleIcon = themeToggleBtn.querySelector('i');
+        const toggleIcon = document.getElementById('toggleIcon');
         const toggleText = document.getElementById('toggleText');
 
         const savedTheme = localStorage.getItem('theme') || 'light';
@@ -295,7 +263,14 @@
 
         function updateToggleInterface(theme) {
             if (theme === 'dark') {
-                toggleIcon.className = 'fa-solid fa-sun';
+                toggleIcon.innerText = '☀️';
                 toggleText.innerText = 'Clair';
             } else {
-                toggleIcon.className = 'fa-solid fa-moon';
+                toggleIcon.innerText = '🌙';
+                toggleText.innerText = 'Sombre';
+            }
+        }
+    </script>
+
+</body>
+</html>
