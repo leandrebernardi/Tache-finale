@@ -153,6 +153,46 @@
             .streaming-links { flex-direction: column; gap: 20px; }
             .badge-link { width: 80%; }
         }
+        .deezer-button {
+          display: inline-flex;
+          align-items: center;
+          background-color: #121212; /* Fond noir style store */
+          color: #FFFFFF;
+          text-decoration: none;
+          border-radius: 8px;
+          padding: 8px 16px;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          border: 1px solid #A238FF; /* Optionnel : liseré avec le violet emblématique */
+          transition: background-color 0.2s ease;
+        }
+        
+        .deezer-button:hover {
+          background-color: #242424;
+        }
+        
+        .deezer-icon {
+          color: #A238FF; /* Le nouveau violet Deezer */
+          margin-right: 12px;
+        }
+        
+        .deezer-text {
+          display: flex;
+          flex-direction: column;
+        }
+        
+        .deezer-caption {
+          font-size: 9px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          color: #A0A0A0;
+        }
+        
+        .deezer-brand {
+          font-size: 18px;
+          font-weight: 700;
+          line-height: 1.2;
+        }
+
     </style>
 </head>
 <body>
@@ -185,19 +225,26 @@
             <div class="streaming-title">Écouter la version originale :</div>
             
             <!-- Lien Spotify -->
-            <a href="https://spotify.com" class="badge-link" target="_blank">
-                <img src="https://www.citypng.com/public/uploads/preview/listen-on-spotify-button-png-704081694687028ibbwkwliyx.png" alt="Spotify">
+            <a href="https://open.spotify.com/track/4vwVTiQj0TjisDsXzScAeb" class="badge-link" target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSihDXsefRWW-wSzrYDhhuUQug6pWVsArV8B9h3IpJz-g&s=10" alt="Spotify">
             </a>
 
             <!-- Lien Apple Music -->
-            <a href="https://music.apple.com/us/song/alla-fiera-dellest/1443480954" class="badge-link" target="_blank">
-                <img src="https://applemediaservices.com" alt="Apple Music">
+            <a href="https://music.apple.com/de/song/alla-fiera-dellest/1442769839?l=en-GB" class="badge-link" target="_blank">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQ6ByjWzVb6CmyDsaaHBY483UgsDBCd7v1cvk0M-EWgg&s=10" alt="Apple Music">
             </a>
 
             <!-- Lien Deezer (Texte retiré et remplacé par l'icône harmonisée) -->
-            <a href="https://www.deezer.com/fr/album/99684" class="badge-link" target="_blank">
-                <img src="https://spreadshirtmedia.net" alt="Deezer" style="border-radius: 8px;">
-            </a>
+                <a href="https://www.deezer.com/en/track/491567662" class="deezer-button" target="_blank" rel="noopener noreferrer">
+                  <img src="https://deezerbrand.com/document/127/show/eyJpZCI6NzU4Miwic2NvcGUiOiJhc3NldDp2aWV3IiwidGltZXN0YW1wIjoiMTc5MTI2NDg5MSJ9:deezer:Iqo5K6PXjZGRLCknvB6S8LQhHOURnplbZlSfN471jdA" alt="Logo deezer">
+                  <svg class="deezer-icon" viewBox="0 0 24 24" width="24" height="24">
+                    <path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  </svg>
+                  <div class="deezer-text">
+                    <span class="deezer-caption">ÉCOUTER SUR</span>
+                    <span class="deezer-brand">Deezer</span>
+                  </div>
+                </a>
         </div>
     </div>
 
